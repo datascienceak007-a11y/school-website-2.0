@@ -10,6 +10,7 @@ import enquiryRoutes from './routes/enquiryRoutes';
 import authRoutes from './routes/authRoutes';
 import galleryRoutes from './routes/galleryRoutes';
 import announcementRoutes from './routes/announcementRoutes';
+import syllabusRoutes from './routes/syllabusRoutes';
 
 // Load environment variables
 dotenv.config();
