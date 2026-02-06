@@ -51,7 +51,9 @@ export default function AdminDashboardPage() {
     }
   }, [token, filterBranch, filterStatus])
 
-  const fetchData = async (authToken: string) => {
+  const fetchData = async () => {
+    if (!token) return
+    
     setLoading(true)
     try {
       const [enquiriesRes, statsRes] = await Promise.all([
@@ -59,13 +61,13 @@ export default function AdminDashboardPage() {
           `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8001/api'}/enquiries?branch=${filterBranch}&status=${filterStatus}`,
           {
             headers: {
-              Authorization: `Bearer ${authToken}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         ),
         fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8001/api'}/enquiries/stats`, {
           headers: {
-            Authorization: `Bearer ${authToken}`,
+            Authorization: `Bearer ${token}`,
           },
         }),
       ])
@@ -85,12 +87,6 @@ export default function AdminDashboardPage() {
     } finally {
       setLoading(false)
     }
-  }
-
-  const handleLogout = () => {
-    localStorage.removeItem('adminToken')
-    localStorage.removeItem('adminData')
-    router.push('/admin/login')
   }
 
   const handleStatusUpdate = async (enquiryId: string, newStatus: string) => {
