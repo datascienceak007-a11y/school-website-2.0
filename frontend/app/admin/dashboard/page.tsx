@@ -179,6 +179,41 @@ export default function AdminDashboardPage() {
         </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Quick Actions */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <Link
+            href="/admin/announcements"
+            className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow group"
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="flex items-center gap-3 mb-2">
+                  <Megaphone className="text-primary-600" size={28} />
+                  <h3 className="text-xl font-bold text-gray-900">Manage Announcements</h3>
+                </div>
+                <p className="text-gray-600">Create and manage school announcements</p>
+              </div>
+              <ArrowRight className="text-primary-600 group-hover:translate-x-1 transition-transform" size={24} />
+            </div>
+          </Link>
+
+          <Link
+            href="/admin/syllabus"
+            className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow group"
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="flex items-center gap-3 mb-2">
+                  <BookOpen className="text-primary-600" size={28} />
+                  <h3 className="text-xl font-bold text-gray-900">Manage Syllabus</h3>
+                </div>
+                <p className="text-gray-600">Upload and manage class syllabus</p>
+              </div>
+              <ArrowRight className="text-primary-600 group-hover:translate-x-1 transition-transform" size={24} />
+            </div>
+          </Link>
+        </div>
+
         {/* Stats Cards */}
         {stats && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
