@@ -79,3 +79,13 @@ export const syllabusSchema = z.object({
   fileSize: z.string().optional(),
   isActive: z.boolean().optional().default(true),
 });
+
+export const sliderSchema = z.object({
+  title: z.string().min(3, 'Title must be at least 3 characters').max(200),
+  description: z.string().max(500).optional(),
+  imageUrl: z.string().url('Invalid image URL'),
+  buttonText: z.string().max(50).optional(),
+  buttonLink: z.string().optional(),
+  order: z.number().optional(),
+  isActive: z.boolean().optional().default(true),
+});
