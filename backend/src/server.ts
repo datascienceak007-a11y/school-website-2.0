@@ -9,6 +9,7 @@ import { errorHandler } from './middleware/errorHandler';
 import enquiryRoutes from './routes/enquiryRoutes';
 import authRoutes from './routes/authRoutes';
 import galleryRoutes from './routes/galleryRoutes';
+import announcementRoutes from './routes/announcementRoutes';
 
 // Load environment variables
 dotenv.config();
