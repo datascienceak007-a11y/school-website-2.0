@@ -51,6 +51,7 @@ app.use('/api/enquiries', enquiryRoutes);
 app.use('/api/admin', authRoutes);
 app.use('/api/gallery', galleryRoutes);
 app.use('/api/announcements', announcementRoutes);
+app.use('/api/syllabus', syllabusRoutes);
 
 // Health check
 app.get('/api/health', (req: Request, res: Response) => {
