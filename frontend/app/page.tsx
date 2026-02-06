@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { GraduationCap, Users, Award, TrendingUp, CheckCircle, Star, ArrowRight, BookOpen, Trophy, Heart } from 'lucide-react'
+import HeroCarousel from '@/components/HeroCarousel'
 
 export const metadata: Metadata = {
   title: 'Home - Excellence Academy | Premier Education Institution',
