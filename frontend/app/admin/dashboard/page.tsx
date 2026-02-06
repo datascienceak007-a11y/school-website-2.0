@@ -11,6 +11,9 @@ import {
   Filter,
   RefreshCw,
   Shield,
+  Megaphone,
+  BookOpen,
+  ArrowRight,
 } from 'lucide-react'
 import { useAuth } from '@/lib/auth-context'
 import ProtectedRoute from '@/lib/protected-route'
