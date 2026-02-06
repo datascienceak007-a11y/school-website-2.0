@@ -12,6 +12,7 @@ import galleryRoutes from './routes/galleryRoutes';
 import announcementRoutes from './routes/announcementRoutes';
 import syllabusRoutes from './routes/syllabusRoutes';
 import sliderRoutes from './routes/sliderRoutes';
+import staffRoutes from './routes/staffRoutes';
 
 // Load environment variables
 dotenv.config();
