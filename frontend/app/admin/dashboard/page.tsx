@@ -233,7 +233,6 @@ export default function AdminDashboardPage() {
               value={filterBranch}
               onChange={(e) => {
                 setFilterBranch(e.target.value)
-                fetchData(token)
               }}
               className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500"
             >
@@ -247,7 +246,6 @@ export default function AdminDashboardPage() {
               value={filterStatus}
               onChange={(e) => {
                 setFilterStatus(e.target.value)
-                fetchData(token)
               }}
               className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500"
             >
@@ -259,7 +257,7 @@ export default function AdminDashboardPage() {
             </select>
 
             <button
-              onClick={() => fetchData(token)}
+              onClick={fetchData}
               className="ml-auto flex items-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
             >
               <RefreshCw size={20} />
