@@ -11,6 +11,7 @@ import authRoutes from './routes/authRoutes';
 import galleryRoutes from './routes/galleryRoutes';
 import announcementRoutes from './routes/announcementRoutes';
 import syllabusRoutes from './routes/syllabusRoutes';
+import sliderRoutes from './routes/sliderRoutes';
 
 // Load environment variables
 dotenv.config();
