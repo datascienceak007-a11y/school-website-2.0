@@ -133,7 +133,7 @@ export default function AdminDashboardPage() {
     })
   }
 
-  if (loading && !adminData) {
+  if (loading && !admin) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <RefreshCw className="animate-spin text-primary-600" size={40} />
@@ -142,26 +142,38 @@ export default function AdminDashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50" data-testid="admin-dashboard">
-      {/* Header */}
-      <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex justify-between items-center">
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
-              <p className="text-sm text-gray-600">Welcome back, {adminData?.name}</p>
+    <ProtectedRoute>
+      <div className="min-h-screen bg-gray-50" data-testid="admin-dashboard">
+        {/* Header */}
+        <header className="bg-white shadow-sm border-b border-gray-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-primary-600 rounded-lg flex items-center justify-center">
+                  <Shield className="text-white" size={24} />
+                </div>
+                <div>
+                  <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
+                  <p className="text-sm text-gray-600">Welcome back, {admin?.name}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="text-right hidden sm:block">
+                  <p className="text-sm font-medium text-gray-900">{admin?.email}</p>
+                  <p className="text-xs text-gray-500">{admin?.role === 'super_admin' ? 'Super Admin' : 'Admin'}</p>
+                </div>
+                <button
+                  onClick={logout}
+                  className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                  data-testid="logout-button"
+                >
+                  <LogOut size={20} />
+                  <span className="hidden sm:inline">Logout</span>
+                </button>
+              </div>
             </div>
-            <button
-              onClick={handleLogout}
-              className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
-              data-testid="logout-button"
-            >
-              <LogOut size={20} />
-              Logout
-            </button>
           </div>
-        </div>
-      </header>
+        </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Stats Cards */}
