@@ -229,6 +229,25 @@ export default function AdminDashboardPage() {
               <ArrowRight className="text-primary-600 group-hover:translate-x-1 transition-transform" size={24} />
             </div>
           </Link>
+
+          {/* Owner Only - Staff Management */}
+          {admin?.role === 'super_admin' && (
+            <Link
+              href="/admin/staff"
+              className="bg-gradient-to-br from-purple-500 to-purple-700 text-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow group"
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <Users size={28} />
+                    <h3 className="text-xl font-bold">Staff Management</h3>
+                  </div>
+                  <p className="text-purple-100">Manage admin accounts</p>
+                </div>
+                <ArrowRight className="group-hover:translate-x-1 transition-transform" size={24} />
+              </div>
+            </Link>
+          )}
         </div>
 
         {/* Stats Cards */}
