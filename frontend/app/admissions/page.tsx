@@ -308,6 +308,14 @@ export default function AdmissionsPage() {
                     <p className="text-sm">We'll contact you within 24 hours.</p>
                   </div>
                 )}
+
+                {/* Error Message */}
+                {submitStatus === 'error' && (
+                  <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg" data-testid="error-message">
+                    <p className="font-semibold">Something went wrong!</p>
+                    <p className="text-sm">Please try again or contact us directly.</p>
+                  </div>
+                )}
               </form>
             </div>
           </div>
