@@ -49,6 +49,7 @@ app.use('/api', limiter);
 app.use('/api/enquiries', enquiryRoutes);
 app.use('/api/admin', authRoutes);
 app.use('/api/gallery', galleryRoutes);
+app.use('/api/announcements', announcementRoutes);
 
 // Health check
 app.get('/api/health', (req: Request, res: Response) => {
