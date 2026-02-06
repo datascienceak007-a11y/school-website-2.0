@@ -31,20 +31,37 @@ export default function AdmissionsPage() {
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setSubmitStatus('success')
-      setFormData({
-        studentName: '',
-        parentName: '',
-        email: '',
-        phone: '',
-        branch: '',
-        grade: '',
-        message: '',
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8001/api'}/enquiries`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       })
-    }, 1500)
+
+      const data = await response.json()
+
+      if (data.success) {
+        setSubmitStatus('success')
+        setFormData({
+          studentName: '',
+          parentName: '',
+          email: '',
+          phone: '',
+          branch: '',
+          grade: '',
+          message: '',
+        })
+      } else {
+        setSubmitStatus('error')
+      }
+    } catch (error) {
+      console.error('Submit error:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
