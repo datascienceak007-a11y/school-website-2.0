@@ -123,6 +123,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         logout,
         isAuthenticated: !!token && !!admin,
         isLoading,
+        isOwner: admin?.role === 'super_admin',
+        isAdmin: admin?.role === 'admin' || admin?.role === 'super_admin',
       }}
     >
       {children}
