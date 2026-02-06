@@ -55,6 +55,7 @@ app.use('/api/gallery', galleryRoutes);
 app.use('/api/announcements', announcementRoutes);
 app.use('/api/syllabus', syllabusRoutes);
 app.use('/api/slider', sliderRoutes);
+app.use('/api/staff', staffRoutes);
 
 // Health check
 app.get('/api/health', (req: Request, res: Response) => {
