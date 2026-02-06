@@ -26,3 +26,13 @@ export const gallerySchema = z.object({
 export const updateEnquiryStatusSchema = z.object({
   status: z.enum(['pending', 'contacted', 'enrolled', 'rejected']),
 });
+
+export const announcementSchema = z.object({
+  title: z.string().min(5, 'Title must be at least 5 characters').max(200),
+  message: z.string().min(10, 'Message must be at least 10 characters').max(1000),
+  isImportant: z.boolean().optional().default(false),
+  isPinned: z.boolean().optional().default(false),
+  startDate: z.string().datetime().optional(),
+  expiryDate: z.string().datetime().optional().nullable(),
+  isActive: z.boolean().optional().default(true),
+});
