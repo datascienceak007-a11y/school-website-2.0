@@ -1,17 +1,26 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Lock, Mail, Loader, AlertCircle } from 'lucide-react'
+import { useAuth } from '@/lib/auth-context'
 
 export default function AdminLoginPage() {
   const router = useRouter()
+  const { login, isAuthenticated, isLoading } = useAuth()
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState('')
+
+  // Redirect if already authenticated
+  useEffect(() => {
+    if (!isLoading && isAuthenticated) {
+      router.push('/admin/dashboard')
+    }
+  }, [isAuthenticated, isLoading, router])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -26,33 +35,23 @@ export default function AdminLoginPage() {
     setIsSubmitting(true)
     setError('')
 
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8001/api'}/admin/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
+    const result = await login(formData.email, formData.password)
 
-      const data = await response.json()
-
-      if (data.success) {
-        // Store token
-        localStorage.setItem('adminToken', data.data.token)
-        localStorage.setItem('adminData', JSON.stringify(data.data.admin))
-        
-        // Redirect to dashboard
-        router.push('/admin/dashboard')
-      } else {
-        setError(data.message || 'Login failed. Please try again.')
-      }
-    } catch (error) {
-      console.error('Login error:', error)
-      setError('Failed to connect to server. Please try again.')
-    } finally {
-      setIsSubmitting(false)
+    if (result.success) {
+      router.push('/admin/dashboard')
+    } else {
+      setError(result.message || 'Login failed. Please try again.')
     }
+
+    setIsSubmitting(false)
+  }
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader className="animate-spin text-primary-600" size={40} />
+      </div>
+    )
   }
 
   return (
