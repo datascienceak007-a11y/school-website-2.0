@@ -14,6 +14,7 @@ import {
   Megaphone,
   BookOpen,
   ArrowRight,
+  Image as ImageIcon,
 } from 'lucide-react'
 import { useAuth } from '@/lib/auth-context'
 import ProtectedRoute from '@/lib/protected-route'
