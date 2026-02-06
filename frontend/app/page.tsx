@@ -41,82 +41,15 @@ export default function HomePage() {
 
   const achievements = [
     'Top-ranked school in the region for 5 consecutive years',
-    ' 100+ national and international awards',
+    '100+ national and international awards',
     'Alumni placed in top universities worldwide',
     'State-of-the-art infrastructure and technology',
   ]
 
   return (
     <div className="pt-20" data-testid="home-page">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-50 via-white to-accent-50 overflow-hidden">
-        <div className="container py-20 lg:py-32">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Hero Content */}
-            <div className="space-y-8 animate-fade-in">
-              <div className="inline-block">
-                <span className="bg-accent-100 text-accent-700 px-4 py-2 rounded-full text-sm font-semibold">
-                  🎓 Admissions Open for 2025-26
-                </span>
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 font-display leading-tight">
-                Shape Your Child's
-                <span className="text-primary-600"> Bright Future</span>
-              </h1>
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-                Excellence Academy offers world-class education with a perfect blend of academics, sports, and character development. Join us to unlock your child's true potential.
-              </p>
-              
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Link
-                  href="/admissions"
-                  className="btn-secondary inline-flex items-center justify-center gap-2 text-center"
-                  data-testid="hero-apply-now-button"
-                >
-                  Apply Now
-                  <ArrowRight size={20} />
-                </Link>
-                <Link
-                  href="/branches"
-                  className="btn-outline inline-flex items-center justify-center gap-2 text-center"
-                  data-testid="hero-explore-branches-button"
-                >
-                  Explore Our Branches
-                </Link>
-              </div>
-
-              {/* Quick Stats */}
-              <div className="flex flex-wrap gap-6 pt-4">
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="text-green-500" size={20} />
-                  <span className="text-sm font-medium text-gray-700">CBSE Affiliated</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="text-green-500" size={20} />
-                  <span className="text-sm font-medium text-gray-700">ISO Certified</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="text-green-500" size={20} />
-                  <span className="text-sm font-medium text-gray-700">Smart Classrooms</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Hero Image */}
-            <div className="relative h-[400px] lg:h-[600px] animate-slide-up">
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary-600/20 to-accent-600/20 rounded-3xl transform rotate-3"></div>
-              <div className="absolute inset-0 bg-white rounded-3xl shadow-2xl overflow-hidden transform -rotate-3">
-                <img
-                  src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&h=1000&fit=crop"
-                  alt="Happy students at Excellence Academy"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Carousel */}
+      <HeroCarousel />
 
       {/* Stats Section */}
       <section className="bg-primary-600 text-white py-16" data-testid="stats-section">
