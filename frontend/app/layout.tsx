@@ -40,6 +40,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
       <body className="font-sans">
         <Navigation />
+        <AnnouncementTicker />
         <main className="min-h-screen">
           {children}
         </main>
