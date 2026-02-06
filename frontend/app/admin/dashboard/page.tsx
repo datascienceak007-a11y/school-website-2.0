@@ -38,9 +38,7 @@ interface Stats {
 }
 
 export default function AdminDashboardPage() {
-  const router = useRouter()
-  const [token, setToken] = useState('')
-  const [adminData, setAdminData] = useState<any>(null)
+  const { admin, token, logout } = useAuth()
   const [enquiries, setEnquiries] = useState<Enquiry[]>([])
   const [stats, setStats] = useState<Stats | null>(null)
   const [loading, setLoading] = useState(true)
@@ -48,19 +46,10 @@ export default function AdminDashboardPage() {
   const [filterStatus, setFilterStatus] = useState('')
 
   useEffect(() => {
-    // Check authentication
-    const storedToken = localStorage.getItem('adminToken')
-    const storedAdmin = localStorage.getItem('adminData')
-
-    if (!storedToken || !storedAdmin) {
-      router.push('/admin/login')
-      return
+    if (token) {
+      fetchData()
     }
-
-    setToken(storedToken)
-    setAdminData(JSON.parse(storedAdmin))
-    fetchData(storedToken)
-  }, [router])
+  }, [token, filterBranch, filterStatus])
 
   const fetchData = async (authToken: string) => {
     setLoading(true)
