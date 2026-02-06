@@ -1,20 +1,19 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
 import {
   LogOut,
   Users,
-  TrendingUp,
   Clock,
   CheckCircle,
   XCircle,
   Phone,
-  Mail,
-  Calendar,
   Filter,
   RefreshCw,
+  Shield,
 } from 'lucide-react'
+import { useAuth } from '@/lib/auth-context'
+import ProtectedRoute from '@/lib/protected-route'
 
 interface Enquiry {
   _id: string
